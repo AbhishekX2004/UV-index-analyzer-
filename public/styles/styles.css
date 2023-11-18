@@ -1,0 +1,119 @@
+.title, .addressTitle{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}   
+
+.addressTitle{
+    margin-bottom: 30px;
+}
+
+.container{
+    margin-bottom: 100px;
+}
+
+.inputField{
+    position:absolute;
+}
+
+.inputAddress, form{
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputAddress{
+    font-size: 1.2rem;
+    position: relative;
+    --primary: #2196f3;
+}
+
+.input{
+    position: absolute;
+    all:unset;
+    color: black;
+    padding: 1rem;
+    border: 1px solid #9e9e9e;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.addressLabel{
+    position: absolute;
+    margin-top: 30px;
+    top: 1rem;
+    left: 1rem;
+    color: gray;
+    pointer-events: none;
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.input:focus{
+    border: 1px solid var(--primary);
+}
+
+.input:is(:focus, :valid) ~ label{
+    transform: translateY(-120%) scale(0.7);
+    background-color: white;
+    padding-inline : 0.3rem;
+    color: var(--primary);
+}
+
+.submit{
+    position: absolute;
+    top: 60px;
+}
+
+
+.date_time{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 20px
+}
+
+.low{
+    color:#558B2F;
+}
+.mod{
+    color:#F9A825;
+}
+.high{
+    color:#EF6C00;
+}
+.vhigh{
+    color:#B71C1C;
+}
+.extr{
+    color:#6A1B9A;
+}
+
+.logo{
+    color: black;
+}
+
+.fact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fact p{
+    font-size:large;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer ul{
+    list-style-type: none;
+    display : flex;
+    justify-content: space-between;
+
+}
