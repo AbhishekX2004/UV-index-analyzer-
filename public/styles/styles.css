@@ -1,77 +1,101 @@
-.title, .addressTitle{
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}   
-
-.addressTitle{
-    margin-bottom: 30px;
-}
-
-.container{
-    margin-bottom: 100px;
-}
-
-.inputField{
-    position:absolute;
-}
-
-.inputAddress, form{
-    display : flex;
+/* header */
+body{
+    display: flex;
     flex-direction: column;
+    background-color: #1a1a1a;
+    color: wheat;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
+    margin:20px  
 }
 
-.inputAddress{
-    font-size: 1.2rem;
+.date_time{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap:50px;
+}
+
+.title{
+    text-align: center;
+}
+
+/* main */
+.addressForm{
     position: relative;
-    --primary: #2196f3;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
 }
 
 .input{
-    position: absolute;
-    all:unset;
-    color: black;
+    font-size: 1.25rem;
+    position: relative;
+    --primary: #2196f3;
+    margin-bottom: 20px;
+}
+
+.addressField{
+    all: unset;
     padding: 1rem;
     border: 1px solid #9e9e9e;
     border-radius: 10px;
-    margin-bottom: 15px;
-    margin-top: 30px;
     transition: 150ms cubic-bezier(0.4,0,0.2,1);
 }
 
 .addressLabel{
     position: absolute;
-    margin-top: 30px;
-    top: 1rem;
-    left: 1rem;
-    color: gray;
+    top:1rem;
+    left:1rem;
+    color: #d4d4d4;
     pointer-events: none;
     transition: 150ms cubic-bezier(0.4,0,0.2,1);
 }
 
-.input:focus{
+.addressField:focus{
     border: 1px solid var(--primary);
 }
 
-.input:is(:focus, :valid) ~ label{
+.addressField:is(:focus,:valid)~label{
     transform: translateY(-120%) scale(0.7);
-    background-color: white;
-    padding-inline : 0.3rem;
+    background-color: #1a1a1a;
+    padding-inline: 0.3rem;
     color: var(--primary);
 }
 
-.submit{
-    position: absolute;
-    top: 60px;
+.bn31 {
+    background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #00a84f;
+    display: block;
+    height: 50px;
+    font-size: 1.4em;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    width: 7em;
+    z-index: 2;
 }
-
-
-.date_time{
+  
+.bn31:hover {
+    color: #fff;
+}
+  
+.bn31 .bn31span {
+    align-items: center;
+    background: #1a1a1a;
+    border-radius: 40px;
     display: flex;
-    justify-content: space-between;
-    margin: 30px 20px
+    justify-content: center;
+    height: 100%;
+    transition: background 0.5s ease;
+    width: 100%;
+}
+  
+.bn31:hover .bn31span {
+    background: transparent;
 }
 
 .low{
@@ -90,30 +114,27 @@
     color:#6A1B9A;
 }
 
+.facts p {
+    text-align:center;
+}
+
+.danger{
+    font-weight: bolder;
+    font-size: xx-large;
+    text-align: center;
+}
+
+
+/* footer */
 .logo{
-    color: black;
+    color: whitesmoke;
 }
 
-.fact{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.fact p{
-    font-size:large;
-}
-
-footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-footer ul{
+ul{
     list-style-type: none;
-    display : flex;
-    justify-content: space-between;
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:20px;
 }

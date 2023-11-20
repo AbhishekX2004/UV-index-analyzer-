@@ -11,74 +11,79 @@
     <%- include('partials/header.ejs') %>
 
     <!-- main -->
-    <div class = container>
-        <div class = "addressTitle">
-            <h2>Where do ya live mate??</h2>
-        </div>
-        <div class = "inputAddress">       
-            <form action="/address" method="post">
-                <div class = "inputField">
-                    <input class = "input" required autocomplete="street-address" type = "text" name = "address" id = "address">
-                    <label class = "addressLabel" for="address">Address</label>
-                </div>
-                <button class = "submit" type="submit">Submit</button>
-            </form>
-        </div>
-    </div>
-    <div class = "fact">
-        <% var danger; %>
-        <% if(locals.uvi){ %>
-            <p><h3>Current uvi is : <%= uvi.uv %></h3></p>
-            <p>The max UV index for today would be <%= uvi.uv_max %>.</p>
-            <% if(uvi.uv < 3){ %>
-                <p class = "danger low">Low</p>
-                <% danger = 0; %>
-            <% }else if(uvi.uv >= 3 && uvi.uv <6){ %>
-                <p class = "danger mod">Moderate</p>
-                <% danger = 1; %>
-            <% }else if(uvi.uv >= 6 && uvi.uv <8){ %>
-                <p class = "danger high">High</p>
-                <% danger = 2; %>
-            <% }else if(uvi.uv >= 8 && uvi.uv <11){ %>
-                <p class = "danger vhigh">Very High</p>
-                <% danger = 3; %>
-            <% }else{ %>
-                <p class = "danger extr">Extreme</p>
-                <% danger = 4; %>
-            <% } %>
-            <% if (danger == 0) { %>
-                <p>
-                    Sun is peaceful right now, no need for a Sunscreen.<br/>
-                    No harm if you use it, you might become a sweaty mess though.<br/>
-                    Sunscreen of SPF 15 - 30 can be used.
-                </p>
-            <% }else if(danger == 1){ %>
-                <p>
-                    Use a sunscreen of SPF 30 to keep from burning.
-                </p>
-            <% }else if(danger == 2){ %>
-                <p>
-                    Use a sunscreen of SPF 30 - 50 to keep from burning.
-                </p>
-            <% }else if(danger == 3){ %>
-                <p>
-                    Use a sunscreen of SPF 50 to keep from burning.
-                    It is recommended to wear protective clothing as well.
-                </p>
-            <% }else{ %>
-                <p>
-                    Use a sunscreen of SPF 50+ to keep from burning.
-                    It is recommended to wear protective clothing as well.
-                </p>
-            <% } %>
-        <% }else{ %>
-            <div class = "fact">
-                <h3>Did you know ??</h3>
-                <p>
-                    <%= fact %>
-                </p>
+    <div class = "container">
+        <div class = "addressIn">
+            <div class = "title">
+                <h2>Where do ya live mate??</h2>
             </div>
-        <% } %>
+            <div class = "addressForm">       
+                <form action="/address" method="post">
+                    <div class = "input">
+                        <input class = "addressField" required autocomplete="street-address" type = "text" name = "address" id = "address">
+                        <label class = "addressLabel" for="address">Address</label>
+                    </div>
+                    <button class="bn31" type="submit"><span class="bn31span">Submit</span></button>
+                </form>
+            </div>
+        </div>
+
+        <div class = "dangerLevel">
+            <% var danger; %>
+            <% if(locals.uvi){ %>
+                <p><h3>Current uvi is : <%= uvi.uv %></h3></p>
+                <p>The max UV index for today would be <%= uvi.uv_max %>.</p>
+                <% if(uvi.uv < 3){ %>
+                    <p class = "danger low">Low</p>
+                    <% danger = 0; %>
+                <% }else if(uvi.uv >= 3 && uvi.uv <6){ %>
+                    <p class = "danger mod">Moderate</p>
+                    <% danger = 1; %>
+                <% }else if(uvi.uv >= 6 && uvi.uv <8){ %>
+                    <p class = "danger high">High</p>
+                    <% danger = 2; %>
+                <% }else if(uvi.uv >= 8 && uvi.uv <11){ %>
+                    <p class = "danger vhigh">Very High</p>
+                    <% danger = 3; %>
+                <% }else{ %>
+                    <p class = "danger extr">Extreme</p>
+                    <% danger = 4; %>
+                <% } %>
+
+
+                <% if (danger == 0) { %>
+                    <p>
+                        Sun is peaceful right now, no need for a Sunscreen.<br/>
+                        No harm if you use it, you might become a sweaty mess though.<br/>
+                        Sunscreen of SPF 15 - 30 can be used.
+                    </p>
+                <% }else if(danger == 1){ %>
+                    <p>
+                        Use a sunscreen of SPF 30 to keep from burning.
+                    </p>
+                <% }else if(danger == 2){ %>
+                    <p>
+                        Use a sunscreen of SPF 30 - 50 to keep from burning.
+                    </p>
+                <% }else if(danger == 3){ %>
+                    <p>
+                        Use a sunscreen of SPF 50 to keep from burning.
+                        It is recommended to wear protective clothing as well.
+                    </p>
+                <% }else{ %>
+                    <p>
+                        Use a sunscreen of SPF 50+ to keep from burning.
+                        It is recommended to wear protective clothing as well.
+                    </p>
+                <% } %>
+            <% }else{ %>
+                <div class = "facts">
+                    <h3 class = "title">Did you know ??</h3>
+                    <p>
+                        <%= fact %>
+                    </p>
+                </div>
+            <% } %>
+        </div>
     </div>
 
     <!-- footer -->
