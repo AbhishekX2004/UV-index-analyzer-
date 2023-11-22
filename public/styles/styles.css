@@ -11,7 +11,7 @@ body{
 
 .date_time{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: row;
     justify-content: space-evenly;
     gap:50px;
@@ -20,8 +20,21 @@ body{
 .title{
     text-align: center;
 }
-
 /* main */
+
+.addressIn{
+    background: rgb(58,179,180);
+    background: linear-gradient(90deg, rgba(58,179,180,1) 0%, rgba(60,253,29,1) 50%, rgba(55,113,143,1) 100%);
+    padding: 10px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 120px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 120px;
+    max-width: 40%;
+    position: relative;
+    left : 30%;
+}
+
 .addressForm{
     display: block;
     text-align: center;
@@ -63,7 +76,7 @@ body{
 
 .addressField:is(:focus,:valid)~label{
     transform: translateY(-120%) scale(0.7);
-    background-color: #1a1a1a;
+    background-color: rgba(59, 253, 29, 0.8);
     padding-inline: 0.3rem;
     color: var(--primary);
 }
