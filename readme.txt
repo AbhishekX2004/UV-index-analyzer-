@@ -1,4 +1,4 @@
-go to the folder that saves the entire files 
+go to the folder that saves the repo
 
 run the following commands in the same order
 
