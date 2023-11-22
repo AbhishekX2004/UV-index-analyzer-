@@ -23,10 +23,14 @@ body{
 
 /* main */
 .addressForm{
-    position: relative;
-    width: 50%;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    text-align: center;
+}
+
+.addressForm form{
+    display: inline-block;
+    margin: auto;
+    text-align: left;
 }
 
 .input{
@@ -76,7 +80,7 @@ body{
     position: relative;
     text-decoration: none;
     width: 7em;
-    z-index: 2;
+    left: 22%;
 }
   
 .bn31:hover {
@@ -114,8 +118,9 @@ body{
     color:#6A1B9A;
 }
 
-.facts p {
+.dangerLevel {
     text-align:center;
+    padding-bottom: 10px;
 }
 
 .danger{
