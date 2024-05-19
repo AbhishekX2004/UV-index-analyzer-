@@ -4,14 +4,14 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 dotenv.config();
 
 //api
-const geoCode = "https://api.opencagedata.com/geocode/v1/json?";
+const geoCodeUrl = "https://api.opencagedata.com/geocode/v1/json?";
 const geoCodeKey = process.env.geoCodeKey;
 
-const uvi = "https://api.openuv.io/api/v1/uv?";
+const uviUrl = "https://api.openuv.io/api/v1/uv?";
 const uviKey = process.env.uviKey;  
 
 //fun facts
@@ -28,35 +28,48 @@ var facts = [
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.set("view engine", "ejs");
 
-app.get("/",(req,res)=>{
-    res.render("index.ejs",{
-        fact: facts[Math.floor(8*Math.random())]
+app.get("/", (req, res) => {
+    res.render("index", {
+        fact: facts[Math.floor(Math.random() * facts.length)]
     });
-})
+});
 
-app.post("/address",async(req,res)=>{
-    const address = req.body["address"].replace(/ /g, "+");
-    try{
-        var geoLocation = await axios.get(`${geoCode}key=${geoCodeKey}&q=${address}`);
-        var lat = geoLocation.data.results[0].geometry.lat;
-        var lng = geoLocation.data.results[0].geometry.lng;
+app.post("/address", async (req, res) => {
+    const address = req.body.address.replace(/ /g, "+");
 
-        var forecast = await axios.get(`${uvi}lat=${lat}&lng=${lng}`,{
-            headers:{
+    try {
+        const geoResponse = await axios.get(geoCodeUrl, {
+            params: {
+                key: geoCodeKey,
+                q: address
+            }
+        });
+        const { lat, lng } = geoResponse.data.results[0].geometry;
+
+        const uviResponse = await axios.get(uviUrl, {
+            headers: {
                 'Content-Type': 'application/json',
                 'x-access-token': uviKey
             },
+            params: { lat, lng }
+        });
+
+        res.render("index", {
+            fact: facts[Math.floor(Math.random() * facts.length)],
+            uvi: uviResponse.data.result
+        });
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        res.render("index", {
+            fact: facts[Math.floor(Math.random() * facts.length)],
+            uvi: null,
+            error: "Unable to retrieve data. Please try again later."
         });
     }
-    catch(error){
-        console.log(error);
-    }
-    res.render("index.ejs",{
-        uvi: forecast.data.result
-    });
-})
+});
 
-app.listen(port,()=>{
-    console.log(`\nServer is running on port : ${port}.\n`);
-})
+app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
+});
